@@ -26,11 +26,19 @@ program
   .action((options) => {
     const {
       dist,
-      config
+      config,
+      region,
+      accessKeyId,
+      accessKeySecret,
+      bucket,
     } = options
     publish({
       dist,
-      config
+      config,
+      region,
+      accessKeyId,
+      accessKeySecret,
+      bucket,
     })
   })
 
