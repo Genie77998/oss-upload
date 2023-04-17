@@ -7,6 +7,6 @@ npm i @wj77998/oss-upload -g
 
 ### 使用
 ```bash
-oss-upload publish -d ./build
+oss-upload publish -d ./build -c ./config-example.json
 ```
 
