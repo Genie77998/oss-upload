@@ -1,0 +1,30 @@
+{
+  "name": "@wj77998/oss-upload",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "oss-upload": "bin/oss-upload"
+  },
+  "scripts": {
+    "start": "node ./bin/oss-upload"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Genie77998/oss-upload.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ali-oss": "^6.17.1",
+    "commander": "^10.0.0",
+    "fs-extra": "^11.1.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
