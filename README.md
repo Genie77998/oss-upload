@@ -1,3 +1,7 @@
+### 介绍
+
+阿里云上传文件、文件夹cli命令
+
 ### 安装
 
 ```bash
@@ -16,3 +20,21 @@ oss-upload publish -d ./build -c /User/xxx/oss-upload.json
 oss-upload publish -d ./build -r <region> -k <accessKeyId> -s <accessKeySecret> -b <bucket>
 ```
 
+### 配置文件
+```json
+{
+  "accessKeyId": "",
+  "accessKeySecret": "",
+  "region": "",
+  "bucket": ""
+}
+```
+
+### 自定义全局命令
+```bash
+alias upload="oss-upload publish -c ~/oss-config.json -d"
+```
+```bash
+$ upload ./dist
+$ upload ./a.zip
+```

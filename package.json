@@ -1,8 +1,9 @@
 {
   "name": "@wj77998/oss-upload",
-  "version": "1.1.1",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.2",
+  "description": "阿里云oss上传工具",
+  "main": "src/index.js",
+  "keywords": ["ali-oss", "upload", "node"],
   "bin": {
     "oss-upload": "bin/oss-upload"
   },
@@ -17,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/Genie77998/oss-upload.git"
   },
-  "author": "",
+  "author": "wj77998",
   "license": "ISC",
   "dependencies": {
     "ali-oss": "^6.17.1",
@@ -25,6 +26,6 @@
     "fs-extra": "^11.1.1"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   }
 }
