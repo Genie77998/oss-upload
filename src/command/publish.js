@@ -28,7 +28,7 @@ module.exports = async ({
   const client = new OSS(params)
   const filelist = await readFileOrDir(resolve(dist))
   await filelist.map(async item => {
-    await client.put(item.replace(process.cwd(), '').slice(1), item)
+    await client.put(item.replace(process.cwd(), '').slice(1).replaceAll(require('path').sep, '/'), item)
     console.log(`[ ${item} ] 上传成功`)
   })
   console.log(`${filelist.length}个文件上传完成！`)
