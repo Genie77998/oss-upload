@@ -18,6 +18,12 @@ oss-upload publish -d ./build -c /User/xxx/oss-upload.json
 
 # 命令行配置
 oss-upload publish -d ./build -r <region> -k <accessKeyId> -s <accessKeySecret> -b <bucket>
+oss-upload p -d ./build -r <region> -k <accessKeyId> -s <accessKeySecret> -b <bucket>
+
+# 全局设置
+oss-upload set -r <region> -k <accessKeyId> -s <accessKeySecret> -b <bucket>
+
+oss-upload s -r <region> -k <accessKeyId> -s <accessKeySecret> -b <bucket>
 ```
 
 ### 配置文件

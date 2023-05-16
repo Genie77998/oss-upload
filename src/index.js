@@ -1,13 +1,10 @@
 const { Command } = require('commander')
 const { exec } = require('child_process')
 const { resolve } = require('path')
+const { getConfig, setConfig } = require('./utils')
 const publish = require('./command/publish')
 const { version } = require(resolve(__dirname, '..', 'package.json'))
 
-// const aliOSSAccessKeyId = process.env.npm_config_aliossaccesskeyid
-// const aliOSSAccessKeySecret = process.env.npm_config_aliossaccesskeysecret
-// const aliOSSBucket = process.env.npm_config_aliossbucket
-// const aliOSSRegion = process.env.npm_config_aliossregion
 
 const program = new Command()
 
@@ -16,6 +13,7 @@ program
 
 program
   .command('publish')
+  .alias('p')
   .usage('-d -p')
   .requiredOption('-d, --dist <string>', '需要上传的文件夹 例如 ./build')
   .option('-r, --region <string>', '设置oss region')
@@ -26,12 +24,12 @@ program
   .action((options) => {
     const {
       dist,
-      config,
       region,
       accessKeyId,
       accessKeySecret,
       bucket,
     } = options
+    let config = options.config || getConfig()
     publish({
       dist,
       config,
@@ -42,21 +40,23 @@ program
     })
   })
 
-  // program
-  // .command('set')
-  // .alias('s')
-  // .description('设置默认值')
-  // .option('-r, --region <string>', '设置默认oss region')
-  // .option('-k, --accessKeyId <string>', '设置默认accessKeyId')
-  // .option('-s, --accessKeySecret <string>', '设置默认accessKeySecret')
-  // .option('-b, --bucket <string>', '设置默认bucket')
-  // .action((options) => {
-  //   const req = Object.keys(options).map(item => {
-  //     exec(`npm set alioss${item.toLocaleLowerCase()} ${options[item]}`)
-  //   })
-  //   if (req.length > 0) {
-  //     console.log('设置成功!')
-  //   }
-  // })
+  program
+  .command('set')
+  .alias('s')
+  .description('设置默认值')
+  .option('-r, --region <string>', '设置默认oss region')
+  .option('-k, --accessKeyId <string>', '设置默认accessKeyId')
+  .option('-s, --accessKeySecret <string>', '设置默认accessKeySecret')
+  .option('-b, --bucket <string>', '设置默认bucket')
+  .action((options) => {
+    const lastConfig = getConfig()
+    setConfig({
+      ...lastConfig,
+      ...options,
+    })
+    console.log('设置成功!')
+  })
 
 program.parse(process.argv)
+
+
